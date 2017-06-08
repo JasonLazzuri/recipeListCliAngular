@@ -1,0 +1,13 @@
+  <select (change)="onChange($event.target.value)">
+    <option value="allRecipes">All Recipes</option>
+    <option value="completedRecipes">Completed Recipes</option>
+    <option value="incompleteRecipes" selected="selected">Incomplete Recipes</option>
+  </select>
+
+  <ul>
+    <li [class]="difficultyColor(currentRecipe)" (click)="haveCooked(currentRecipe)" *ngFor="let currentRecipe of childRecipeList | completeness:filterByCompleteness">{{currentRecipe.title}} {{currentRecipe.ingredients}} {{currentRecipe.directions}} {{currentRecipe.difficulty}}
+      <input *ngIf="currentRecipe.cooked === true" type="checkbox" checked (click)="toggleCooked(currentRecipe, false)"/>
+      <input *ngIf="currentRecipe.cooked === false" type="checkbox" (click)="toggleCooked(currentRecipe, true)"/>
+      <button (click)="editButtonHasBeenClicked(currentRecipe)">Edit!</button>
+    </li>
+  </ul>

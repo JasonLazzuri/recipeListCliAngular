@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Recipe Box</h1>
+  <recipe-list [childRecipeList]="masterRecipeList" (clickSender)="editRecipe($event)"></recipe-list>
+  <hr>
+  <edit-recipe [childSelectedRecipe]="selectedRecipe" (doneButtonClickedSender)="finishedEditing()"></edit-recipe>
+  <new-recipe (newRecipeSender)="addRecipe($event)"></new-recipe>
+</div>
